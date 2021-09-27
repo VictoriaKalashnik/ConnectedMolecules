@@ -2,10 +2,11 @@
 
 - send Get events request in Postman 
 - make sure the response doesn't contain a record with payload = X and thingId = Y 
+- if it does exist send "Delete a single event" request in Postman with that record's timestamp
 
 ## "X" sends an event with message "Y"
 
-- run command in commandline: 
+- run command in commandline in `thing-example-js` directory: 
 ```shell
 node pubsub --endpoint "a15auxg78avhs5-ats.iot.eu-west-1.amazonaws.com" --cert "../certificate.pem" --key "../private.key" --ca "../AmazonRootCA1.pem" --topic "kalashnikviktoriia/events"  --message "Y" --thing "X" --count 1
 ```
