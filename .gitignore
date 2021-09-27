@@ -1,0 +1,5 @@
+private.key
+api-key.txt
+AmazonRootCA1.pem
+certificate.pem
+**/node_modules/

@@ -1,0 +1,90 @@
+openapi: '3.0.0'
+info:
+  version: 1.0.0
+  title: QA-INTERVIEW API
+servers:
+  - url: https://api.qa-interview.connectedmolecules.com
+
+paths:
+  /events:
+    get:
+      summary: Get events
+      operationId: getEvents
+      description: |
+        Get event list published to authenticated thing
+      security:
+        - APIKeyHeader: []
+      responses:
+        200:
+          description: List of events
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    thingId:
+                      type: string
+                      description: Thing name
+                    timestamp:
+                      type: number
+                      description: Timestamp of event
+                    payload:
+                      nullable: true
+                      description: Published Payload
+        401:
+          description: Authorization failed
+        500:
+          description: Internal Server Error
+  '/events/{timestamp}':
+    delete:
+      summary: Delete a single event
+      operationId: deleteEvent
+      description: |
+        Delete Event
+      parameters:
+        - in: path
+          name: timestamp
+          required: true
+          schema:
+            type: string
+      security:
+        - APIKeyHeader: []
+      responses:
+        204:
+          description: Successful delete operation
+        401:
+          description: Authorization failed
+        500:
+          description: Internal Server Error
+  '/commands':
+    post:
+      summary: Send a command to the thing
+      operationId: postCommand
+      description: |
+        Post command
+      requestBody:
+        description: Request body is flexible. Any property name / type is allowed
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cats:
+                  type: string
+                dogs:
+                  type: string
+      responses:
+        200:
+          description: Successfully sent command
+        401:
+          description: Authorization failed
+        500:
+          description: Internal Server Error
+components:
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: Authorization
