@@ -3,8 +3,8 @@ The task was to do whatever a QA/test engineer would do when facing the system.
 
 My approach was to:
 - Create a test plan using Gherkin language (see [feature file](API.feature))
-- Create a description of the steps mentioned in the test plan (see [API steps](API%20%steps.md))
-- Perform the test run described by the test plan and document the results (see [API test run](API%20%test%20%run.md))
+- Create a description of the steps mentioned in the test plan (see [API steps](API%20steps.md))
+- Perform the test run described by the test plan and document the results (see [API test run](API%20test%20run.md))
 
 Few comments:
 - As discussed with Çağrı, I've considered the [openapi](openapi.yml) file as source of truth. 
